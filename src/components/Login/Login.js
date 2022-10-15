@@ -53,7 +53,7 @@ const Login = () => {
 
     return (
         <div className='w-50 mx-auto'>
-            <h1>Please login:</h1>
+            <h1 className='text-primary'>Please login:</h1>
             <form onSubmit={handleLogin}>
                 <div className="mb-3">
                     <label htmlFor="formGroupExampleInput" className="form-label">Your Email:</label>

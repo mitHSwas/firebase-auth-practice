@@ -42,8 +42,15 @@ const SocialAccounts = () => {
             .catch(error => console.error("Error", error))
     }
 
+    const divStyle = {
+        width: "50%",
+        margin: "0 auto",
+        textAlign: "center",
+
+    }
+
     return (
-        <div>
+        <div style={divStyle}>
             {user.uid ? <div>
                 <button onClick={handleSingOut} type="button" className="btn btn-danger m-2">Sign Out</button>
             </div>
