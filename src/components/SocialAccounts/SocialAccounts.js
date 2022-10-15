@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../../firebase/firebase.init';
 
 const auth = getAuth(app)
 
-const SocialMedia = () => {
+const SocialAccounts = () => {
+
     const [user, setUser] = useState({})
+
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
@@ -16,6 +19,17 @@ const SocialMedia = () => {
             })
             .catch(error => {
                 console.error("error", error)
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                const user = result.user;
+                setUser(user)
+            })
+            .catch(error => {
+                console.error("Error", error)
             })
     }
 
@@ -36,15 +50,17 @@ const SocialMedia = () => {
                 :
                 <div>
                     <button onClick={handleGoogleSignIn} type="button" className="btn btn-primary m-2">Google Sign In</button>
+                    <br />
+                    <button onClick={handleGithubSignIn} type="button" className="btn btn-info">GitHub Sign In</button>
                 </div>}
 
             {user.uid && <div>
                 <h1>Name: {user.displayName}</h1>
                 <p>Your Email: {user.email}</p>
-                <img src={user.photURL} alt="" />
+                <img src={user.photoURL} alt="" />
             </div>}
         </div>
     );
 };
 
-export default SocialMedia;
+export default SocialAccounts;
