@@ -51,7 +51,7 @@ const SocialAccounts = () => {
                 <div>
                     <button onClick={handleGoogleSignIn} type="button" className="btn btn-primary m-2">Google Sign In</button>
                     <br />
-                    <button onClick={handleGithubSignIn} type="button" className="btn btn-info">GitHub Sign In</button>
+                    <button onClick={handleGithubSignIn} type="button" className="btn btn-info m-2">GitHub Sign In</button>
                 </div>}
 
             {user.uid && <div>
