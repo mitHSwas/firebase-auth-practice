@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import app from '../../firebase/firebase.init';
 
 const auth = getAuth(app)
@@ -47,7 +48,7 @@ const Register = () => {
     const sendVerificationEmail = () => {
         sendEmailVerification(auth.currentUser)
             .then(() => {
-                alert("Verification email send. Please check your inbox.")
+                alert("Verification email send. Please make your email verified.")
             })
     }
 
@@ -71,6 +72,7 @@ const Register = () => {
                 {success && <p className='text-success'> Congratulations!!! Your Account created successfully</p>}
                 <input className="btn btn-outline-warning" type="submit" value="Submit"></input>
             </form>
+            <p><small>Already Have An Account? Please <Link to="/login">Login</Link> </small></p>
         </div>
     );
 };
